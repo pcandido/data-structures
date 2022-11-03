@@ -9,8 +9,20 @@ import (
 
 func TestLinkedList(t *testing.T) {
 
+	t.Run("AddBefore", func(t *testing.T) {
+		t.Run("should add elements at the beginning of the list", func(t *testing.T) {
+			var list list.LinkedList[int]
+
+			list.AddBefore(1)
+			list.AddBefore(2)
+			list.AddBefore(3)
+
+			assert.Equal(t, "[ 3, 2, 1 ]", list.ToString())
+		})
+	})
+
 	t.Run("AddAfter", func(t *testing.T) {
-		t.Run("should add elements at the final of list", func(t *testing.T) {
+		t.Run("should add elements at the final of the list", func(t *testing.T) {
 			var list list.LinkedList[int]
 
 			list.AddAfter(1)

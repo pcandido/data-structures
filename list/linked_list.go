@@ -18,6 +18,12 @@ func (node *node[T]) isLast() bool {
 	return node.next == nil
 }
 
+// Adds an element at the beginning of the list
+// Complexity: O(1)
+func (list *LinkedList[T]) AddBefore(value T){
+	list.head = &node[T]{value, list.head}
+}
+
 // Adds an element at the final of the list
 // Complexity: O(n)
 func (list *LinkedList[T]) AddAfter(value T) {
