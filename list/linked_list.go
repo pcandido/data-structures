@@ -20,7 +20,7 @@ func (node *node[T]) isLast() bool {
 
 // Adds an element at the final of the list
 // Complexity: O(n)
-func (list *LinkedList[T]) Push(value T) {
+func (list *LinkedList[T]) AddAfter(value T) {
 	newNode := &node[T]{value, nil}
 
 	if list.head == nil {
@@ -36,15 +36,15 @@ func (list *LinkedList[T]) Push(value T) {
 	current.next = newNode
 }
 
-// Removes and returns the las element of the list
+// Deletes and returns the las element of the list
 // Complexity: O(n)
-func (list *LinkedList[T]) Pop() (value T, err error) {
+func (list *LinkedList[T]) DeleteLast() (value T, err error) {
 	if list.head == nil {
 		err = fmt.Errorf("could not pop from the list, it is empty")
 		return
 	}
 
-	if list.head.isLast(){
+	if list.head.isLast() {
 		value = list.head.value
 		list.head = nil
 		return
