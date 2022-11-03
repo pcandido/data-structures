@@ -8,8 +8,8 @@ import (
 func main() {
 	var x list.List[int] = &list.LinkedList[int]{}
 
-	x.AddAfter(1)
-	x.AddAfter(2)
+	x.Push(1)
+	x.Push(2)
 
 	fmt.Println(x.ToString())
 }

@@ -14,9 +14,13 @@ type LinkedList[T any] struct {
 	head *node[T]
 }
 
+func (node *node[T]) isLast() bool {
+	return node.next == nil
+}
+
 // Adds an element at the final of the list
 // Complexity: O(n)
-func (list *LinkedList[T]) AddAfter(value T) {
+func (list *LinkedList[T]) Push(value T) {
 	newNode := &node[T]{value, nil}
 
 	if list.head == nil {
@@ -30,6 +34,31 @@ func (list *LinkedList[T]) AddAfter(value T) {
 	}
 
 	current.next = newNode
+}
+
+// Removes and returns the las element of the list
+// Complexity: O(n)
+func (list *LinkedList[T]) Pop() (value T, err error) {
+	if list.head == nil {
+		err = fmt.Errorf("could not pop from the list, it is empty")
+		return
+	}
+
+	if list.head.isLast(){
+		value = list.head.value
+		list.head = nil
+		return
+	}
+
+	current := list.head
+	for !current.next.isLast() {
+		current = current.next
+	}
+
+	value = current.next.value
+	current.next = nil
+
+	return
 }
 
 // Generates a string that represents the whole list

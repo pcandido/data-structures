@@ -1,6 +1,7 @@
 package list
 
 type List[T any] interface {
-	AddAfter(value T)
+	Push(value T)
+	Pop() (value T, err error) 
 	ToString() string
 }
