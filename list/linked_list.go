@@ -20,13 +20,13 @@ func (node *node[T]) isLast() bool {
 
 // Adds an element at the beginning of the list
 // Complexity: O(1)
-func (list *LinkedList[T]) AddBefore(value T) {
+func (list *LinkedList[T]) InsertStart(value T) {
 	list.head = &node[T]{value, list.head}
 }
 
 // Adds an element at the final of the list
 // Complexity: O(n)
-func (list *LinkedList[T]) AddAfter(value T) {
+func (list *LinkedList[T]) InsertEnd(value T) {
 	newNode := &node[T]{value, nil}
 
 	if list.head == nil {
@@ -44,7 +44,7 @@ func (list *LinkedList[T]) AddAfter(value T) {
 
 // Deletes and returns the first element of the list
 // Complexity: O(1)
-func (list *LinkedList[T]) DeleteFirst() (value T, err error) {
+func (list *LinkedList[T]) RemoveStart() (value T, err error) {
 	if list.head == nil {
 		err = fmt.Errorf("could not delete from an empty list")
 		return
@@ -58,7 +58,7 @@ func (list *LinkedList[T]) DeleteFirst() (value T, err error) {
 
 // Deletes and returns the last element of the list
 // Complexity: O(n)
-func (list *LinkedList[T]) DeleteLast() (value T, err error) {
+func (list *LinkedList[T]) RemoveEnd() (value T, err error) {
 	if list.head == nil {
 		err = fmt.Errorf("could not delete from an empty list")
 		return
