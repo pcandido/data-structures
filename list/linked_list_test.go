@@ -167,4 +167,36 @@ func TestLinkedList(t *testing.T) {
 		})
 	})
 
+	t.Run("Find", func(t *testing.T) {
+		t.Run("should return an error if the list is empty", func(t *testing.T) {
+			var list list.LinkedList[int]
+			_, err := list.Find(3)
+			assert.NotNil(t, err)
+		})
+
+		t.Run("should return the index of found element", func(t *testing.T) {
+			var list list.LinkedList[int]
+			list.AddAfter(1)
+			list.AddAfter(2)
+			list.AddAfter(3)
+			list.AddAfter(4)
+
+			index, err := list.Find(3)
+
+			assert.Nil(t, err)
+			assert.Equal(t, 2, index)
+		})
+
+		t.Run("should return an error if element does not exist on the list", func(t *testing.T) {
+			var list list.LinkedList[int]
+			list.AddAfter(1)
+			list.AddAfter(2)
+			list.AddAfter(3)
+			list.AddAfter(4)
+
+			_, err := list.Find(5)
+
+			assert.NotNil(t, err)
+		})
+	})
 }

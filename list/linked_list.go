@@ -5,12 +5,12 @@ import (
 	"fmt"
 )
 
-type node[T any] struct {
+type node[T comparable] struct {
 	value T
 	next  *node[T]
 }
 
-type LinkedList[T any] struct {
+type LinkedList[T comparable] struct {
 	head *node[T]
 }
 
@@ -20,7 +20,7 @@ func (node *node[T]) isLast() bool {
 
 // Adds an element at the beginning of the list
 // Complexity: O(1)
-func (list *LinkedList[T]) AddBefore(value T){
+func (list *LinkedList[T]) AddBefore(value T) {
 	list.head = &node[T]{value, list.head}
 }
 
@@ -78,6 +78,26 @@ func (list *LinkedList[T]) DeleteLast() (value T, err error) {
 	value = current.next.value
 	current.next = nil
 
+	return
+}
+
+// Find and element on the list and returns its index
+// Complexity: O(n)
+func (list LinkedList[T]) Find(value T) (index int, err error) {
+	currentNode := list.head
+	currentIndex := 0
+
+	for currentNode != nil {
+		if currentNode.value == value {
+			index = currentIndex
+			return
+		}
+
+		currentIndex = currentIndex + 1
+		currentNode = currentNode.next
+	}
+
+	err = fmt.Errorf("element not found")
 	return
 }
 
