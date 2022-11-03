@@ -42,11 +42,25 @@ func (list *LinkedList[T]) AddAfter(value T) {
 	current.next = newNode
 }
 
-// Deletes and returns the las element of the list
+// Deletes and returns the first element of the list
+// Complexity: O(1)
+func (list *LinkedList[T]) DeleteFirst() (value T, err error) {
+	if list.head == nil {
+		err = fmt.Errorf("could not delete from an empty list")
+		return
+	}
+
+	value = list.head.value
+	list.head = list.head.next
+
+	return
+}
+
+// Deletes and returns the last element of the list
 // Complexity: O(n)
 func (list *LinkedList[T]) DeleteLast() (value T, err error) {
 	if list.head == nil {
-		err = fmt.Errorf("could not pop from the list, it is empty")
+		err = fmt.Errorf("could not delete from an empty list")
 		return
 	}
 
