@@ -113,6 +113,23 @@ func (list LinkedList[T]) First() (value T, err error) {
 	return
 }
 
+// Returns the value of the last element of the list
+// Complexity: O(n)
+func (list LinkedList[T]) Last() (value T, err error) {
+	if list.head == nil {
+		err = fmt.Errorf("could not get first from an empty list")
+		return
+	}
+
+	current := list.head
+	for !current.isLast() {
+		current = current.next
+	}
+
+	value = current.value
+	return
+}
+
 // Generates a string that represents the whole list
 // Complexity: O(n)
 func (list LinkedList[T]) ToString() string {

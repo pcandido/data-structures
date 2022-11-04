@@ -7,5 +7,6 @@ type List[T any] interface {
 	RemoveEnd() (value T, err error)
 	Find(value T) (index int, err error)
 	First() (value T, err error)
+	Last() (value T, err error)
 	ToString() string
 }

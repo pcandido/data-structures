@@ -219,4 +219,24 @@ func TestLinkedList(t *testing.T) {
 			assert.Equal(t, 1, value)
 		})
 	})
+
+	t.Run("Last", func(t *testing.T) {
+		t.Run("should return an error if list is empty", func(t *testing.T) {
+			var list list.LinkedList[int]
+			_, err := list.Last()
+			assert.NotNil(t, err)
+		})
+
+		t.Run("should return the last element of the list", func(t *testing.T) {
+			var list list.LinkedList[int]
+			list.InsertEnd(1)
+			list.InsertEnd(2)
+			list.InsertEnd(3)
+
+			value, err := list.Last()
+
+			assert.Nil(t, err)
+			assert.Equal(t, 3, value)
+		})
+	})
 }
