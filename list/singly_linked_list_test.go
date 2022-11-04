@@ -7,11 +7,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestLinkedList(t *testing.T) {
+func TestSinglyLinkedList(t *testing.T) {
 
 	t.Run("InsertStart", func(t *testing.T) {
 		t.Run("should add elements at the beginning of the list", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 
 			list.InsertStart(1)
 			list.InsertStart(2)
@@ -23,7 +23,7 @@ func TestLinkedList(t *testing.T) {
 
 	t.Run("InsertEnd", func(t *testing.T) {
 		t.Run("should add elements at the final of the list", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 
 			list.InsertEnd(1)
 			list.InsertEnd(2)
@@ -35,14 +35,14 @@ func TestLinkedList(t *testing.T) {
 
 	t.Run("RemoveStart", func(t *testing.T) {
 		t.Run("should return an error if list is empty", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 			_, err := list.RemoveEnd()
 			assert.NotNil(t, err)
 		})
 
 		t.Run("in an 1-element list", func(t *testing.T) {
-			makeList := func() list.LinkedList[int] {
-				var list list.LinkedList[int]
+			makeList := func() list.SinglyLinkedList[int] {
+				var list list.SinglyLinkedList[int]
 				list.InsertEnd(5)
 				return list
 			}
@@ -66,8 +66,8 @@ func TestLinkedList(t *testing.T) {
 		})
 
 		t.Run("in an 5-elements list", func(t *testing.T) {
-			makeList := func() list.LinkedList[int] {
-				var list list.LinkedList[int]
+			makeList := func() list.SinglyLinkedList[int] {
+				var list list.SinglyLinkedList[int]
 				list.InsertEnd(1)
 				list.InsertEnd(2)
 				list.InsertEnd(3)
@@ -102,14 +102,14 @@ func TestLinkedList(t *testing.T) {
 
 	t.Run("RemoveEnd", func(t *testing.T) {
 		t.Run("should return an error if list is empty", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 			_, err := list.RemoveEnd()
 			assert.NotNil(t, err)
 		})
 
 		t.Run("in an 1-element list", func(t *testing.T) {
-			makeList := func() list.LinkedList[int] {
-				var list list.LinkedList[int]
+			makeList := func() list.SinglyLinkedList[int] {
+				var list list.SinglyLinkedList[int]
 				list.InsertEnd(5)
 				return list
 			}
@@ -133,8 +133,8 @@ func TestLinkedList(t *testing.T) {
 		})
 
 		t.Run("in an 5-elements list", func(t *testing.T) {
-			makeList := func() list.LinkedList[int] {
-				var list list.LinkedList[int]
+			makeList := func() list.SinglyLinkedList[int] {
+				var list list.SinglyLinkedList[int]
 				list.InsertEnd(1)
 				list.InsertEnd(2)
 				list.InsertEnd(3)
@@ -169,13 +169,13 @@ func TestLinkedList(t *testing.T) {
 
 	t.Run("Find", func(t *testing.T) {
 		t.Run("should return an error if the list is empty", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 			_, err := list.Find(3)
 			assert.NotNil(t, err)
 		})
 
 		t.Run("should return the index of found element", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 			list.InsertEnd(1)
 			list.InsertEnd(2)
 			list.InsertEnd(3)
@@ -188,7 +188,7 @@ func TestLinkedList(t *testing.T) {
 		})
 
 		t.Run("should return an error if element does not exist on the list", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 			list.InsertEnd(1)
 			list.InsertEnd(2)
 			list.InsertEnd(3)
@@ -202,13 +202,13 @@ func TestLinkedList(t *testing.T) {
 
 	t.Run("First", func(t *testing.T) {
 		t.Run("should return an error if list is empty", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 			_, err := list.First()
 			assert.NotNil(t, err)
 		})
 
 		t.Run("should return the first element of the list", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 			list.InsertEnd(1)
 			list.InsertEnd(2)
 			list.InsertEnd(3)
@@ -222,13 +222,13 @@ func TestLinkedList(t *testing.T) {
 
 	t.Run("Last", func(t *testing.T) {
 		t.Run("should return an error if list is empty", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 			_, err := list.Last()
 			assert.NotNil(t, err)
 		})
 
 		t.Run("should return the last element of the list", func(t *testing.T) {
-			var list list.LinkedList[int]
+			var list list.SinglyLinkedList[int]
 			list.InsertEnd(1)
 			list.InsertEnd(2)
 			list.InsertEnd(3)

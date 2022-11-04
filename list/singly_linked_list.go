@@ -10,7 +10,7 @@ type node[T comparable] struct {
 	next  *node[T]
 }
 
-type LinkedList[T comparable] struct {
+type SinglyLinkedList[T comparable] struct {
 	head *node[T]
 }
 
@@ -20,13 +20,13 @@ func (node *node[T]) isLast() bool {
 
 // Adds an element at the beginning of the list
 // Complexity: O(1)
-func (list *LinkedList[T]) InsertStart(value T) {
+func (list *SinglyLinkedList[T]) InsertStart(value T) {
 	list.head = &node[T]{value, list.head}
 }
 
 // Adds an element at the final of the list
 // Complexity: O(n)
-func (list *LinkedList[T]) InsertEnd(value T) {
+func (list *SinglyLinkedList[T]) InsertEnd(value T) {
 	newNode := &node[T]{value, nil}
 
 	if list.head == nil {
@@ -44,7 +44,7 @@ func (list *LinkedList[T]) InsertEnd(value T) {
 
 // Deletes and returns the first element of the list
 // Complexity: O(1)
-func (list *LinkedList[T]) RemoveStart() (value T, err error) {
+func (list *SinglyLinkedList[T]) RemoveStart() (value T, err error) {
 	if list.head == nil {
 		err = fmt.Errorf("could not delete from an empty list")
 		return
@@ -58,7 +58,7 @@ func (list *LinkedList[T]) RemoveStart() (value T, err error) {
 
 // Deletes and returns the last element of the list
 // Complexity: O(n)
-func (list *LinkedList[T]) RemoveEnd() (value T, err error) {
+func (list *SinglyLinkedList[T]) RemoveEnd() (value T, err error) {
 	if list.head == nil {
 		err = fmt.Errorf("could not delete from an empty list")
 		return
@@ -83,7 +83,7 @@ func (list *LinkedList[T]) RemoveEnd() (value T, err error) {
 
 // Find and element on the list and returns its index
 // Complexity: O(n)
-func (list LinkedList[T]) Find(value T) (index int, err error) {
+func (list SinglyLinkedList[T]) Find(value T) (index int, err error) {
 	currentNode := list.head
 	currentIndex := 0
 
@@ -103,7 +103,7 @@ func (list LinkedList[T]) Find(value T) (index int, err error) {
 
 // Returns the value of the first element of the list
 // Complexity: O(1)
-func (list LinkedList[T]) First() (value T, err error) {
+func (list SinglyLinkedList[T]) First() (value T, err error) {
 	if list.head == nil {
 		err = fmt.Errorf("could not get first from an empty list")
 		return
@@ -115,7 +115,7 @@ func (list LinkedList[T]) First() (value T, err error) {
 
 // Returns the value of the last element of the list
 // Complexity: O(n)
-func (list LinkedList[T]) Last() (value T, err error) {
+func (list SinglyLinkedList[T]) Last() (value T, err error) {
 	if list.head == nil {
 		err = fmt.Errorf("could not get first from an empty list")
 		return
@@ -132,7 +132,7 @@ func (list LinkedList[T]) Last() (value T, err error) {
 
 // Generates a string that represents the whole list
 // Complexity: O(n)
-func (list LinkedList[T]) ToString() string {
+func (list SinglyLinkedList[T]) ToString() string {
 	var buffer bytes.Buffer
 
 	head := list.head
