@@ -101,6 +101,18 @@ func (list LinkedList[T]) Find(value T) (index int, err error) {
 	return
 }
 
+// Returns the value of the first element of the list
+// Complexity: O(1)
+func (list LinkedList[T]) First() (value T, err error) {
+	if list.head == nil {
+		err = fmt.Errorf("could not get first from an empty list")
+		return
+	}
+
+	value = list.head.value
+	return
+}
+
 // Generates a string that represents the whole list
 // Complexity: O(n)
 func (list LinkedList[T]) ToString() string {

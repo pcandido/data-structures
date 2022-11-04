@@ -199,4 +199,24 @@ func TestLinkedList(t *testing.T) {
 			assert.NotNil(t, err)
 		})
 	})
+
+	t.Run("First", func(t *testing.T) {
+		t.Run("should return an error if list is empty", func(t *testing.T) {
+			var list list.LinkedList[int]
+			_, err := list.First()
+			assert.NotNil(t, err)
+		})
+
+		t.Run("should return the first element of the list", func(t *testing.T) {
+			var list list.LinkedList[int]
+			list.InsertEnd(1)
+			list.InsertEnd(2)
+			list.InsertEnd(3)
+
+			value, err := list.First()
+
+			assert.Nil(t, err)
+			assert.Equal(t, 1, value)
+		})
+	})
 }
