@@ -5,29 +5,29 @@ import (
 	"fmt"
 )
 
-type node[T comparable] struct {
+type singlyLinkedListNode[T comparable] struct {
 	value T
-	next  *node[T]
+	next  *singlyLinkedListNode[T]
 }
 
 type SinglyLinkedList[T comparable] struct {
-	head *node[T]
+	head *singlyLinkedListNode[T]
 }
 
-func (node *node[T]) isLast() bool {
+func (node *singlyLinkedListNode[T]) isLast() bool {
 	return node.next == nil
 }
 
 // Adds an element at the beginning of the list
 // Complexity: O(1)
 func (list *SinglyLinkedList[T]) InsertStart(value T) {
-	list.head = &node[T]{value, list.head}
+	list.head = &singlyLinkedListNode[T]{value, list.head}
 }
 
 // Adds an element at the final of the list
 // Complexity: O(n)
 func (list *SinglyLinkedList[T]) InsertEnd(value T) {
-	newNode := &node[T]{value, nil}
+	newNode := &singlyLinkedListNode[T]{value, nil}
 
 	if list.head == nil {
 		list.head = newNode
