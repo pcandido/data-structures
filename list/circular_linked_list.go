@@ -14,11 +14,6 @@ type CircularLinkedList[T comparable] struct {
 	tail *circularLinkedListNode[T]
 }
 
-// depracated
-func (node *circularLinkedListNode[T]) isLast() bool {
-	return node.next == nil
-}
-
 // Adds an element at the beginning of the list
 // Complexity: O(1)
 func (list *CircularLinkedList[T]) InsertStart(value T) {
